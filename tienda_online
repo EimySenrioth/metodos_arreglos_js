@@ -1,0 +1,33 @@
+//arreglo de objetos con al menos 5 productos, cada uno con las propiedades nombre, precio y categoría.
+
+const productos = [
+    { nombre: "Camiseta", precio: 15, categoria: "Ropa" },
+    { nombre: "Laptop", precio: 800, categoria: "Electrónica" },
+    { nombre: "Libro", precio: 12, categoria: "Educación" },
+    { nombre: "Zapatos", precio: 50, categoria: "Ropa" },
+    { nombre: "Celular", precio: 600, categoria: "Electrónica" },
+];
+//Usa filter() para obtener los productos que cuesten menos de $100.
+const productosBaratos = productos.filter(productos => productos.precio < 100);
+console.log(productosBaratos);
+//Usa sort() para ordenar esos productos alfabéticamente por su nombre.
+const productosOrdenados = productosBaratos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+console.log(productosOrdenados);
+//Usa map() para generar un nuevo arreglo que contenga solo los nombres de los productos.
+const nombresProductos = productosOrdenados.map(producto => producto.nombre);
+console.log(nombresProductos);
+//Muestra los resultados de la aplicación de cada métiodo en co
+// Incluye alguno de los métodos faltantes (reduce, some, every, includes, etc.) 
+const totalPrecio = productos.reduce((total, producto) => total + producto.precio, 0);
+console.log(`El precio total de los productos es: $${totalPrecio}`);
+
+const hayProductoCaro = productos.some(producto => producto.precio > 500);
+console.log(`¿Hay productos caros? ${hayProductoCaro ? 'Sí' : 'No'}`);
+
+//verifica si todos loe elementos del arreglo cumple una condicion
+const todosSonRopa = productos.every(producto => producto.categoria === 'Ropa');
+console.log(`¿Todos los productos son de ropa? ${todosSonRopa ? 'Sí' : 'No'}`);
+//inclues verifica si un elemento existe en el arreglo
+//some verifica si al menos un elemento cumple la condicion
+const hayLibros = productos.some(producto => producto.nombre.includes('Libro'));
+console.log(`¿Hay libros en la lista? ${hayLibros ? 'Sí' : 'No'}`);
